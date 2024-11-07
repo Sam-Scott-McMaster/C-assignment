@@ -35,7 +35,8 @@ void cmdLineInterpreter(int argc, char *argv[]) {
             }
         } else if (strcmp(argv[i], "--help") == 0) {
             printf(" WELCOME TO THE HELP PORTAL \n");
-            printf("A utility for converting numbers between bases.\nOptions:\n");
+            printf("A utility for converting numbers between bases.\n");
+            printf("Options:\n\n");
             fprintf(stderr, 
                 "Usage: convert [OPTIONS] [NUMBER]\n\n"
                 "A utility for converting numbers between bases.\n\n"
