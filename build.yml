@@ -1,0 +1,46 @@
+name: Build and Test Convert Utility
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: sudo apt-get install gcc-multilib
+      - name: Build convert release version
+        run: gcc -o convert convert.c conversion.c main.c 
+      - name: Upload convert binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: convert
+          path: ./convert
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: sudo apt-get install gcc-multilib
+      - name: Compile test version with coverage and run tests
+        run: |
+          gcc -o convert --coverage convert.c convert_2.c  # Compile with coverage
+          ./convert
+          chmod +x ./test_script
+          ./test_script > test_results.txt
+          gcov convert-convert.c 
+          gcov convert-convert_2.c
+      - name: Upload test results and coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: test_artifacts
+          path: |
+            test_results.txt
+            *.gcov
+            *.gcda
+            *.gcno
