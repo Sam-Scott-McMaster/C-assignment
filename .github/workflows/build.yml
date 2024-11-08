@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install Dependencies
-        run: sudo apt-get install gcc-multilib
+        run: sudo apt-get install -y gcc-multilib
       - name: Build convert release version
         run: gcc -o convert convert.c conversion.c main.c 
       - name: Upload convert binary
@@ -26,16 +26,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install Dependencies
-        run: sudo apt-get install gcc-multilib
+        run: sudo apt-get install -y gcc-multilib
       - name: Compile test version with coverage and run tests
         run: |
           gcc -o convert --coverage convert.c conversion.c main.c  # Compile with coverage
-          ./convert
           chmod +x ./test_script
           ./test_script > test_results.txt
-          gcov convert-convert.c 
-          gcov convert-conversion.c
-	  gcov convert-main.c
+          gcov convert.c 
+          gcov conversion.c
+          gcov main.c
       - name: Upload test results and coverage report
         uses: actions/upload-artifact@v4
         with:
@@ -45,3 +44,4 @@ jobs:
             *.gcov
             *.gcda
             *.gcno
+
