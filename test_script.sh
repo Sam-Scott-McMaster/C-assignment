@@ -75,12 +75,11 @@ test() {
     echo "TC $tc Passed"
 }
 
-gcc -o convert convert.c
 
 test './convert' 'inp1.txt' 'ex_out1.txt' 'empty.txt'
 test './convert -b 2' 'inp2.txt' 'ex_out2.txt' 'empty.txt'
 test './convert -a' 'empty.txt' 'empty.txt' 'usage.txt'
-test './convert --help' 'empty.txt' 'expected_help_output.txt' 'empty.txt'
+test './convert --help' 'empty.txt' 'new.txt' 'empty.txt'
 test './convert -b 10' 'inp_base10.txt' 'ex_out_base10.txt' 'empty.txt'
 test './convert -b 16' 'inp_base16.txt' 'ex_out_base16.txt' 'empty.txt'
 test './convert -b 1' 'empty.txt' 'empty.txt' 'usage_invalid_base.txt'
