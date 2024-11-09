@@ -1,0 +1,27 @@
+welcome to the help portal! 
+Here we convert bases, and numbers between bases
+Options:
+
+Usage: convert [OPTIONS] [NUMBER]
+
+Convert numbers between bases.
+
+Options:
+  -b BASE          Base for conversion (2 to 36).
+                   Default is base 10.
+  -r START FINISH  Convert numbers in the range from START to FINISH (inclusive).
+                   Outputs each converted number on a new line.
+  --help           Display this help message and exit.
+
+Input:
+If no range (-r) is specified, the program reads integers from standard input
+until EOF is encountered. Converted output is displayed immediately.
+
+Examples:
+  convert -b 16               Convert standard input numbers to hexadecimal.
+  convert -b 8 -r 10 20       Convert numbers 10 to 20 to octal.
+  convert --help              Display this help message and exit.
+
+Exit Status:
+  0  Successful execution.
+  1  An error occurred (e.g., invalid base or argument).
