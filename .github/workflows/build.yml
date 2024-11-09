@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install Dependencies
-         run: sudo apt-get install gcc-multilib
+        run: sudo apt-get install gcc-multilib
       - name: Build convert release version
         run: gcc -o convert conversion.c cmdLineInterpreter.c main.c 
       - name: Upload convert binary
