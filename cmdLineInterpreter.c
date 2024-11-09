@@ -34,21 +34,21 @@ void cmdLineInterpreter(int argc, char *argv[]) {
                 exit(1);
             }
         } else if (strcmp(argv[i], "--help") == 0) {
-            printf(" WELCOME TO THE HELP PORTAL \n");
-            printf("A utility for converting numbers between bases.\n");
-            printf("Options:\n\n");
-            fprintf(stderr, 
+            printf(
+                "welcome to the help portal! \n" 
+                "Here we convert bases, and numbers between bases\n"
+                "Options:\n\n"
                 "Usage: convert [OPTIONS] [NUMBER]\n\n"
-                "A utility for converting numbers between bases.\n\n"
+                "Convert numbers between bases.\n\n"
                 "Options:\n"
-                "  -b BASE          Set the base for conversion (2 to 36).\n"
+                "  -b BASE          Base for conversion (2 to 36).\n"
                 "                   Default is base 10.\n"
                 "  -r START FINISH  Convert numbers in the range from START to FINISH (inclusive).\n"
                 "                   Outputs each converted number on a new line.\n"
                 "  --help           Display this help message and exit.\n\n"
                 "Input:\n"
-                "  If no range (-r) is specified, the program reads integers from standard input\n"
-                "  until EOF is encountered. Converted output is displayed immediately.\n\n"
+                "If no range (-r) is specified, the program reads integers from standard input\n"
+                "until EOF is encountered. Converted output is displayed immediately.\n\n"
                 "Examples:\n"
                 "  convert -b 16               Convert standard input numbers to hexadecimal.\n"
                 "  convert -b 8 -r 10 20       Convert numbers 10 to 20 to octal.\n"
@@ -59,7 +59,7 @@ void cmdLineInterpreter(int argc, char *argv[]) {
             );
             exit(0);
         } else {
-            fprintf(stderr, "Error: unknown input, please re-run program and try again %s\n", argv[i]);
+            fprintf(stderr, "Error: Invalid option %s. Use --help for more information.\n", argv[i]);
             exit(1);
         }
     }
