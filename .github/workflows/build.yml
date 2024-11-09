@@ -13,7 +13,9 @@ jobs:
       - name: Install Dependencies
         run: sudo apt-get install gcc-multilib
       - name: Build convert release version
-        run: gcc -o convert conversion.c cmdLineInterpreter.c main.c 
+        run: gcc -o convert conversion.c cmdLineInterpreter.c main.c
+      - name: Compile with Coverage
+        run: gcc -o convert --coverage conversion.c cmdLineInterpreter.c main.c || echo "Compilation failed" 
       - name: Upload convert binary
         uses: actions/upload-artifact@v4
         with:
