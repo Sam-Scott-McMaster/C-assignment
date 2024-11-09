@@ -33,7 +33,7 @@ jobs:
         run: |
           gcc -o convert --coverage conversion.c cmdLineInterpreter.c main.c  # Compile with coverage
           chmod +x ./test_script.sh
-          ./test_script.sh
+          ./test_script.sh > test_results.txt
           gcov conversion.c
           gcov cmdLineInterpreter.c
           gcov main.c
