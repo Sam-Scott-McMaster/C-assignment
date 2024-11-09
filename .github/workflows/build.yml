@@ -13,7 +13,7 @@ jobs:
       - name: Install Dependencies
         run: sudo apt-get install -y gcc-multilib
       - name: Build convert release version
-        run: gcc -o convert conversion.c main.c 
+        run: gcc -o convert conversion.c cmdLineInterpreter.c main.c 
       - name: Upload convert binary
         uses: actions/upload-artifact@v4
         with:
@@ -29,10 +29,11 @@ jobs:
         run: sudo apt-get install -y gcc-multilib
       - name: Compile test version with coverage and run tests
         run: |
-          gcc -o convert --coverage conversion.c main.c  # Compile with coverage
+          gcc -o convert --coverage conversion.c cmdLineInterpreter.c main.c  # Compile with coverage
           chmod +x ./test_script
           ./test_script > test_results.txt
           gcov conversion.c
+          gcov cmdLineInterpreter.c
           gcov main.c
       - name: Upload test results and coverage report
         uses: actions/upload-artifact@v4
