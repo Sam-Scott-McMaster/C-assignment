@@ -17,6 +17,9 @@ jobs:
       - name: Build convert release version
         run: gcc -o convert conversion.c cmdLineInterpreter.c main.c
 
+      - name: Build ctest version with coverage
+        run: gcc -o ctest --coverage conversion.c cmdLineInterpreter.c main.c
+
       - name: Upload convert binary
         uses: actions/upload-artifact@v4
         with:
