@@ -40,9 +40,11 @@ jobs:
 
       - name: Generate coverage reports
         run: |
-          gcov conversion.c; 
-          gcov cmdLineInterpreter.c; 
-          gcov main.c
+          make ctest; 
+          ./test_script.sh > test_results.txt; 
+          gcov ctest-conversion.c; 
+          gcov ctest-cmdLineInterpreter.c; 
+          gcov ctest-main.c
         continue-on-error: true  # Ensures workflow continues if gcov fails on any file
 
       - name: Upload test results and coverage report
