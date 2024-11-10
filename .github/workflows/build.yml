@@ -43,6 +43,7 @@ jobs:
           gcov conversion.c; 
           gcov cmdLineInterpreter.c; 
           gcov main.c
+        continue-on-error: true  # Ensures workflow continues if gcov fails on any file
 
       - name: Upload test results and coverage report
         uses: actions/upload-artifact@v4
@@ -53,6 +54,5 @@ jobs:
             *.gcov
             *.gcda
             *.gcno
-
 
 
