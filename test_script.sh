@@ -76,18 +76,18 @@ test() {
 }
 
 
-test './convert' 'inp1.txt' 'ex_out1.txt' 'empty.txt'
-test './convert -b 2' 'inp2.txt' 'ex_out2.txt' 'empty.txt'
-test './convert -a' 'empty.txt' 'empty.txt' 'usage.txt'
-test './convert --help' 'empty.txt' 'new.txt' 'empty.txt'
-test './convert -b 10' 'inp_base10.txt' 'ex_out_base10.txt' 'empty.txt'
-test './convert -b 16' 'inp_base16.txt' 'ex_out_base16.txt' 'empty.txt'
-test './convert -b 1' 'empty.txt' 'empty.txt' 'usage_invalid_base.txt'
-test './convert -b 10' 'inp_non_integer.txt' 'empty.txt' 'ex_err_non_integer.txt'
-test './convert -b 10' 'inp_negative_base10.txt' 'ex_out_negative_base10.txt' 'empty.txt'
-test './convert -b' 'empty.txt' 'empty.txt' 'usage_no_base.txt'
-test './convert -b 10 -r 5 10' 'empty.txt' 'ex_out_range_base10.txt' 'empty.txt'
-test './convert -b 10 -r' 'empty.txt' 'empty.txt' 'usage_no_range.txt'
+test './ctest' 'inp1.txt' 'ex_out1.txt' 'empty.txt'
+test './ctest -b 2' 'inp2.txt' 'ex_out2.txt' 'empty.txt'
+test './ctest -a' 'empty.txt' 'empty.txt' 'usage.txt'
+test './ctest --help' 'empty.txt' 'new.txt' 'empty.txt'
+test './ctest -b 10' 'inp_base10.txt' 'ex_out_base10.txt' 'empty.txt'
+test './ctest -b 16' 'inp_base16.txt' 'ex_out_base16.txt' 'empty.txt'
+test './ctest -b 1' 'empty.txt' 'empty.txt' 'usage_invalid_base.txt'
+test './ctest -b 10' 'inp_non_integer.txt' 'empty.txt' 'ex_err_non_integer.txt'
+test './ctest -b 10' 'inp_negative_base10.txt' 'ex_out_negative_base10.txt' 'empty.txt'
+test './ctest -b' 'empty.txt' 'empty.txt' 'usage_no_base.txt'
+test './ctest -b 10 -r 5 10' 'empty.txt' 'ex_out_range_base10.txt' 'empty.txt'
+test './ctest -b 10 -r' 'empty.txt' 'empty.txt' 'usage_no_range.txt'
 
 # clean up
 rm -f test_err.txt test_out.txt
