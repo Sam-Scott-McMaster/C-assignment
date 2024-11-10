@@ -33,15 +33,20 @@ jobs:
         run: sudo apt-get install -y gcc-multilib
 
       - name: Compile test version with coverage
-        run: gcc -o ctest --coverage conversion.c cmdLineInterpreter.c main.c
+        run: make ctest  # Compile with coverage as defined in the Makefile
 
       - name: Run tests and collect coverage data
         run: |
           chmod +x ./test_script.sh
           ./test_script.sh > test_results.txt
+          
+          # Generate coverage reports for each source file
           gcov conversion.c
           gcov cmdLineInterpreter.c
           gcov main.c
+
+      - name: List files for debugging (optional)
+        run: ls -la  # Check if .gcno and .gcda files are present
 
       - name: Upload test results and coverage report
         uses: actions/upload-artifact@v4
